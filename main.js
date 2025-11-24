@@ -94,4 +94,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    
+    // --- 5. Back to Top Button Logic (New) ---
+    const backToTopButton = document.getElementById('back-to-top');
+    const scrollThreshold = 300; // Pixels to scroll before the button appears
+
+    const toggleBackToTopButton = () => {
+        if (window.scrollY > scrollThreshold) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    };
+
+    // Initial check and subsequent checks on scroll
+    toggleBackToTopButton();
+    window.addEventListener('scroll', toggleBackToTopButton);
+
+    // Smooth scroll functionality for the button
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 });
